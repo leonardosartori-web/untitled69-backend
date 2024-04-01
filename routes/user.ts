@@ -61,5 +61,4 @@ router.route("/users/:email").get(auth, userApiPermission, (req, res:Response, n
 });
 
 
-
 export {router};

@@ -73,5 +73,4 @@ router.route("/lessons/:id/students/:student").delete(auth, (req, res:Response, 
 });
 
 
-
 export {router};

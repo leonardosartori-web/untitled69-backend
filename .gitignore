@@ -1,14 +1,2 @@
 # Project exclude paths
-/models/Lesson.js
-/models/Lesson.js.map
-/models/ModelInterface.js
-/models/ModelInterface.js.map
-/models/User.js
-/models/User.js.map
 /node_modules/
-/routes/authentication.js
-/routes/authentication.js.map
-/routes/lesson.js
-/routes/lesson.js.map
-/routes/user.js
-/routes/user.js.map

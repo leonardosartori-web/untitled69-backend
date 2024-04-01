@@ -6,7 +6,6 @@ import jsonwebtoken = require('jsonwebtoken');  // JWT generation
 const { expressjwt: jwt, } = require('express-jwt');            // JWT parsing middleware for express
 const result = require('dotenv').config();
 
-
 if (result.error) {
     console.log("Unable to load \".env\" file. Please provide one to store the JWT secret key");
     process.exit(-1);
