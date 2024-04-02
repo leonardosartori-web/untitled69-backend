@@ -9,7 +9,7 @@ let router = express.Router();
 
 router.route("/lessons").get(auth, (req, res:Response, next: NextFunction) => {
 
-    lesson.methods.find({}, {}).then(lessons => {
+    user.new({...req.auth}).getLessons(x => x).then(lessons => {
         return res.status(200).json(lessons);
     }).catch(e => {
         return next({ statusCode:404, error: true, errormessage: "DB error: " + e });

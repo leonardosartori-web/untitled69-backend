@@ -58,8 +58,10 @@ userSchema.methods.setRole = function (role) {
 userSchema.methods.getLessons = function (filter) {
     if (this.role === "student")
         return Lesson_1.lesson.methods.find({ "students": this.fullname }, { students: 0 }).then(lessons => lessons.filter(filter));
+    else if (this.role === "teacher")
+        return Lesson_1.lesson.methods.find({ "teacher": this.fullname }, {}).then(lessons => lessons.filter(filter));
     else
-        return Lesson_1.lesson.methods.find({ "teacher": this.fullname }, { students: 0 }).then(lessons => lessons.filter(filter));
+        return Lesson_1.lesson.methods.find({}, { students: 0 }).then(lessons => lessons.filter(filter));
 };
 userSchema.methods.addLesson = function (data) {
     if (this.role === "teacher") {

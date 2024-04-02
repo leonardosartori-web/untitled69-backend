@@ -67,7 +67,8 @@ userSchema.methods.setRole = function(role:string) {
 userSchema.methods.getLessons = function(filter: Function) {
     if (this.role === "student")
         return lesson.methods.find({"students": this.fullname}, {students: 0}).then(lessons => lessons.filter(filter));
-    else return lesson.methods.find({"teacher": this.fullname}, {students: 0}).then(lessons => lessons.filter(filter));
+    else if (this.role === "teacher") return lesson.methods.find({"teacher": this.fullname}, {}).then(lessons => lessons.filter(filter));
+    else return lesson.methods.find({}, {students: 0}).then(lessons => lessons.filter(filter))
 }
 
 userSchema.methods.addLesson = function (data: Lesson|any): Promise<Lesson> | never {

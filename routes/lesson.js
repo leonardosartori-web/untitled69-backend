@@ -13,14 +13,13 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express = require("express");
-const Lesson_1 = require("../models/Lesson");
 const authentication_1 = require("./authentication");
 const permissions_1 = require("../permissions");
 const User_1 = require("../models/User");
 let router = express.Router();
 exports.router = router;
 router.route("/lessons").get(authentication_1.auth, (req, res, next) => {
-    Lesson_1.lesson.methods.find({}, {}).then(lessons => {
+    User_1.user.new(Object.assign({}, req.auth)).getLessons(x => x).then(lessons => {
         return res.status(200).json(lessons);
     }).catch(e => {
         return next({ statusCode: 404, error: true, errormessage: "DB error: " + e });
